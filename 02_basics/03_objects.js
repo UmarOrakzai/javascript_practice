@@ -12,7 +12,6 @@ const user = {
     }
 }
 
-
 //Accesing Object value By DOT. 
 
 console.log(user.name);
@@ -81,7 +80,14 @@ const users = [
 }
 ]
 
+console.log(user[2].name);
+
+
 console.log(users[2].FullName.userFullName.firstName);
+
+
+
+
 
 
  

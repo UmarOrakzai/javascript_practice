@@ -13,7 +13,17 @@
        
         
         <script >
-            
+            const div = document.createElement('div')
+            div.className = "main"
+            div.style.backgroundColor ='green'
+           
+            const addText = document.createTextNode("Hello World")
+            div.appendChild(addText)
+
+            document.body.appendChild(div)
+
+    
+            console.log(div)
         </script>
     </body>
 </html>

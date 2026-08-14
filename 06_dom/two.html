@@ -8,9 +8,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
     </head>
-    <body>
+    <body style="background-color: #0c0b0b; color: #ffffff; font-family: Arial, sans-serif; padding: 20px;">
        
-        <
-        <script ></script>
+        <div class="parent">
+            <div class="day">Sunday</div>
+            <div class="day">Monday</div>
+            <div class="day">Tuesday</div>
+            <div class="day">Wednesday</div>
+        </div>
+        <script >
+            const parent = document.querySelector('.parent');
+
+            console.log(parent)
+             console.log(parent.children[1].innerHTML)
+
+             for(let i=0; i < parent.children.length; i++){
+                console.log(parent.children[i].innerHTML);
+             }
+
+
+
+        </script>
     </body>
 </html>

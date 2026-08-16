@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Height & Weight Result</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      width: 320px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: green;
+      color: white;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: darkgreen;
+    }
+
+    .result {
+      margin-top: 15px;
+      padding: 12px;
+      background: #e9e9e9;
+      border-radius: 6px;
+      font-weight: bold;
+      min-height: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Height & Weight</h2>
+
+    <form>
+      <input type="number" id="height" placeholder="Enter Height (cm)" required>
+      <input type="number" id="weight" placeholder="Enter Weight (kg)" required>
+      <button type="submit">Calculate</button>
+    </form>
+
+    <!-- RESULT SPACE -->
+    <div class="result">
+      <h1 id="result">Result will appear here...</h1>
+      <h3 id="range"></h3>
+    
+    </div>
+  </div>
+
+<script>
+
+    
+    //  <h3>over weight =  less than 16.6</h3>
+
+  const form =  document.querySelector('form')
+  
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault()
+    const height = parseInt(document.querySelector('#height').value)
+       console.log(height);
+
+       const weight = parseInt(document.querySelector('#weight').value)
+       console.log(weight);
+
+       
+    const finalResult = document.querySelector('#result')
+    const bmiStatus = document.querySelector('#range')
+   if (isNaN(height) || height<=0) {
+        finalResult.innerHTML = 'Please Enter valid Height' 
+    
+   } else if(isNaN(weight) || weight<=0) {
+        finalResult.innerHTML ='Please Enter valid weight' 
+    
+   }
+   
+   else{
+      const bmi = (weight / ((height*height) / 10000)).toFixed(2);
+      finalResult.innerHTML = `${bmi}`
+      if (bmi <= 18.6) {
+        bmiStatus.innerHTML = 'under weight less than = 18.6'
+
+        
+      } else if(bmi >=  18.6 || bmi <=  14.9){
+        bmiStatus.innerHTML = 'Normal Range =  16.6 and 24.9'
+        
+      }
+      else{
+        bmiStatus = 'over weight =  less than 16.6'
+      }
+
+   }
+
+
+    
+    
+  })
+       
+       
+  
+</script>
+</body>
+</html>

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guess Number</title>
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,7 +13,6 @@
             align-items: center;
             height: 100vh;
         }
-
         .container {
             background-color: white;
             width: 350px;
@@ -23,74 +21,75 @@
             border-radius: 10px;
             box-shadow: 0 0 10px #aaa;
         }
-
-        h2 {
-            margin-bottom: 10px;
-        }
-
-        input {
-            width: 90%;
-            padding: 12px;
-            margin: 15px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        button {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            background-color: blue;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .result {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #eee;
-            border-radius: 5px;
-        }
+        input { width: 90%; padding: 12px; margin: 15px 0; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
+        button { padding: 12px 30px; border: none; border-radius: 5px; background-color: blue; color: white; font-size: 16px; cursor: pointer; }
+        button:hover { background-color: darkblue; }
+        .result { margin-top: 20px; padding: 10px; background-color: #eee; border-radius: 5px; font-weight: bold; }
+        .attempts { margin-top: 10px; color: #555; }
     </style>
 </head>
-
 <body>
-
     <div class="container">
-
-        <h2>Guess the Number</h2>
-
-        <p>Guess a number between 1 and 10</p>
-
+        <div id="heading">
+            <h2>Guess the Number</h2>
+            <p>Guess a number between 1 and 10. You have 3 attempts!</p>
+        </div>
         <form>
-            <input type="number" placeholder="Enter your guess">
-
+            <input type="number" placeholder="Enter your guess" min="1" max="10">
             <br>
-
             <button type="submit">Guess</button>
         </form>
-
-        <div class="result">
-            Result will appear here
-        </div>
-
+        <div class="result">Result will appear here</div>
+        <div class="attempts">Attempts: 0 / 3</div>
     </div>
 
     <script>
         const form = document.querySelector('form');
+        const resultDiv = document.querySelector('.result');
+        const attemptsDiv = document.querySelector('.attempts');
+        const attemptNumber = [];
+        const randomNumber = Math.floor(Math.random() * 10) + 1;
+
         form.addEventListener('submit', function(event) {
             event.preventDefault();
-
             const input = form.querySelector('input').value;
-
-            console.log(input);
-
-          
             
+            if(checkGuess(input)) {
+                attemptNumber.push(input);
+                attemptsDiv.textContent = `Attempts: ${attemptNumber.length} / 3`;
+                overattempt(attemptNumber.length, input);
+            }
+            form.querySelector('input').value = ''; // input clear
         });
-    </script>
 
+        function gameOver(msg){
+            form.style.display = 'none';
+            resultDiv.innerHTML = msg + `<br><button onclick="location.reload()">Play Again</button>`
+            document.getElementById('heading').style.display = 'none'
+        }
+
+        function overattempt(attempNumbers, input){
+            if(attempNumbers >= 3 && input != randomNumber ){
+                gameOver(`Game Over! The number was ${randomNumber}`);
+            }
+        }
+
+        function checkGuess(guess) {
+            guess = Number(guess);
+            if (guess < 1 || guess > 10 || isNaN(guess)) {
+                resultDiv.textContent = "Please enter number between 1-10";
+                return false;
+            }
+            
+            if (guess == randomNumber) {
+                gameOver("🎉 Congratulations! You guessed the correct number.");
+            } else if (guess < randomNumber) {
+                resultDiv.textContent = "📉 Too low! Try again.";
+            } else {
+                resultDiv.textContent = "📈 Too high! Try again.";
+            }
+            return true;
+        }
+    </script>
 </body>
 </html>

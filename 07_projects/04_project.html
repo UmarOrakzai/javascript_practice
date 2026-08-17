@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess Number</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            width: 350px;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #aaa;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            background-color: blue;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Guess the Number</h2>
+
+        <p>Guess a number between 1 and 10</p>
+
+        <form>
+            <input type="number" placeholder="Enter your guess">
+
+            <br>
+
+            <button type="submit">Guess</button>
+        </form>
+
+        <div class="result">
+            Result will appear here
+        </div>
+
+    </div>
+
+    <script>
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const input = form.querySelector('input').value;
+
+            console.log(input);
+
+          
+            
+        });
+    </script>
+
+</body>
+</html>

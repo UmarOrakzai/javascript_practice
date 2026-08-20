@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Calculator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    .calculator {
+      background: #1e1e2f;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    #screen {
+      width: 100%;
+      height: 70px;
+      background: #2a2a40;
+      color: white;
+      font-size: 32px;
+      text-align: right;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    button {
+      height: 60px;
+      font-size: 22px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.1s;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    .num {
+      background: #3a3a5a;
+      color: white;
+    }
+    .num:hover {
+      background: #4a4a6a;
+    }
+
+    .op {
+      background: #ff9500;
+      color: white;
+    }
+    .op:hover {
+      background: #ffb340;
+    }
+
+    .clear {
+      background: #ff3b30;
+      color: white;
+    }
+
+    .equal {
+      background: #34c759;
+      color: white;
+      grid-column: span 2;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <input id="screen" type="text" readonly>
+    
+    <div class="buttons">
+      <button class="clear" onclick="clearScreen()">C</button>
+      <button class="op" onclick="pressNum('/')">/</button>
+      <button class="op" onclick="pressNum('*')">*</button>
+      <button class="op" onclick="pressNum('-')">-</button>
+
+      <button class="num" onclick="pressNum('7')">7</button>
+      <button class="num" onclick="pressNum('8')">8</button>
+      <button class="num" onclick="pressNum('9')">9</button>
+      <button class="op" onclick="pressNum('+')">+</button>
+
+      <button class="num" onclick="pressNum('4')">4</button>
+      <button class="num" onclick="pressNum('5')">5</button>
+      <button class="num" onclick="pressNum('6')">6</button>
+      <button class="num" onclick="pressNum('.')">.</button>
+
+      <button class="num" onclick="pressNum('1')">1</button>
+      <button class="num" onclick="pressNum('2')">2</button>
+      <button class="num" onclick="pressNum('3')">3</button>
+      <button class="equal" onclick="pressNum('=')">=</button>
+
+      <button class="num" style="grid-column: span 2;" onclick="pressNum('0')">0</button>
+      <button class="num" onclick="pressNum('00')">00</button>
+    </div>
+  </div>
+
+    <script>
+        let expression = '';
+
+        function pressNum(val){
+            if(val === '='){
+                calculate();
+                return; 
+            }
+            
+            expression = expression + val;
+            document.getElementById('screen').value = expression;
+        }
+
+        function clearScreen(){
+            expression = '';
+            document.getElementById('screen').value = expression;
+        }
+
+        function calculate(){
+            let result = eval(expression); // seedha hisab
+            
+            // agar result decimal lamba ho to 4 digit tak
+            if(result.toString().includes('.')){
+                result = result.toFixed(4);
+            }
+
+            expression = result.toString();
+            document.getElementById('screen').value = expression;
+        } 
+    </script>
+
+</body>
+</html>

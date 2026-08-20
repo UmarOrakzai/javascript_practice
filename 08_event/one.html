@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature Pictures</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            color: green;
+        }
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+        }
+
+        li img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Click on a picture to hide it</h1>
+
+    <ul class="images">
+        <li>
+            <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?w=600" alt="Nature">
+        </li>
+
+        <li>
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600" alt="Forest">
+        </li>
+
+        <li>
+            <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600" alt="Mountain">
+        </li>
+
+        <li>
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600" alt="Landscape">
+        </li>
+
+        <li>
+            <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600" alt="Lake">
+        </li>
+    </ul>
+
+       <script>
+        document.querySelector('.images').addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            console.log(e.target.tagName);
+              if(e.target.tagName === 'IMG'){
+                removeLi = e.target.parentNode;
+            removeLi.remove();
+
+              }
+            
+            
+        },false);
+       </script>
+
+</body>
+</html>

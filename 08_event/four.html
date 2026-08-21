@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BackGround Color Changing</title>
+</head>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /* H1 upar, buttons neeche */
+    justify-content: center;
+    align-items: center;
+    background: #0F172A;
+    font-family: 'Segoe UI', sans-serif;
+    transition: background 0.5s ease; /* Background smooth change */
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0 20px;
+    background: linear-gradient(90deg, #38BDF8, #818CF8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Gradient text effect */
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
+    to { text-shadow: 0 0 20px rgba(129, 140, 248, 0.8); }
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.buttons button {
+    padding: 14px 35px;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Start Button - Green */
+#start {
+    background: linear-gradient(90deg, #22C55E, #16A34A);
+}
+#start:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(34, 197, 94, 0.5);
+}
+
+/* Stop Button - Red */
+#stop {
+    background: linear-gradient(90deg, #EF4444, #DC2626);
+}
+#stop:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5);
+}
+</style>
+<body>
+    <h1>Click On Start Button To Change Backgroundcolor</h1>
+    <div class="buttons">
+        <button id="start"> Start </button>
+        <button id="stop"> Stop</button>
+        
+    </div>
+
+
+    <script>
+        let intervalId;
+        const randomNumbers = function(){
+            const hex = '0123456789ABCDEF'
+
+            let color = '#';
+            for(let i = 0; i < 6; i++){
+                color += hex[Math.floor(Math.random()*16)];
+            }
+            return color;
+            
+        }
+
+        const startChangeColor = function(){
+
+                document.body.style.backgroundColor = randomNumbers()
+        }          
+        
+        document.querySelector('#start').addEventListener('click',function(){
+           intervalId = setInterval(startChangeColor,1000)
+        })
+
+
+        const stopChangingColor = function(){
+            clearInterval(intervalId);
+           
+        }
+
+        document.querySelector('#stop').addEventListener('click', function(){
+            stopChangingColor();
+
+        })
+        
+       
+
+
+    </script>
+</body>
+</html>

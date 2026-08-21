@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Digital Clock</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      gap: 20px;
+    }
+
+    .clock-box {
+      background: black;
+      color: lime;
+      padding: 30px 50px;
+      border-radius: 12px;
+      font-size: 50px;
+      font-weight: bold;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      display: none;
+    }
+     .box {
+      background: black;
+      color: lime;
+      padding: 30px 50px;
+      border-radius: 12px;
+      font-size: 50px;
+      font-weight: bold;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      display: block;
+    }
+    .box1 {
+      background: black;
+      color: lime;
+      padding: 30px 50px;
+      border-radius: 12px;
+      font-size: 50px;
+      font-weight: bold;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="box" id="showTime">Show Time</button>
+  <span><button class="box1" id="hideTime">Hide Time</button></span>
+
+  <div class="clock-box" id="clock-box">
+    <div id="clock">00:00:00</div>
+  </div>
+
+  <script src="Index.js">
+ 
+  </script>
+
+</body>
+</html>

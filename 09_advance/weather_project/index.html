@@ -120,16 +120,16 @@
 </head>
 <body>
     <div class="weather-card">
-        <div class="search-box">
+        <form class="search-box" >
             <input type="text" placeholder="Enter city name" >
-            <button>Search</button>
-        </div>
+            <button type="submit">Search</button>
+        </form>
 
         <div class="weather-info">
-            <div class="icon">☀️</div>
-            <h2 class="city" id="city">Lahore, PK</h2>
-            <h1 class="temp">32°C</h1>
-            <p class="description">Clear Sky</p>
+            <div class="icon" id="icon">☀️</div>
+            <h2 class="city" id="city">No Data</h2>
+            <h1 class="temp" id="temp">32°C</h1>
+            <h4 class="description" id="description">Loading....</h4>
 
             <div class="details">
                 <div class="col">

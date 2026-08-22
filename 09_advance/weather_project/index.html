@@ -3,11 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .weather-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            color: white;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 16px;
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-box button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            background: white;
+            color: #667eea;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .search-box button:hover {
+            transform: scale(1.05);
+        }
+
+        .weather-info {
+            text-align: center;
+        }
+
+        .city {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .temp {
+            font-size: 70px;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .description {
+            font-size: 20px;
+            text-transform: capitalize;
+            margin-bottom: 30px;
+        }
+
+        .details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .col {
+            text-align: center;
+        }
+
+        .col h4 {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .col p {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .icon {
+            font-size: 80px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello</h1>
+    <div class="weather-card">
+        <div class="search-box">
+            <input type="text" placeholder="Enter city name" >
+            <button>Search</button>
+        </div>
 
+        <div class="weather-info">
+            <div class="icon">☀️</div>
+            <h2 class="city" id="city">Lahore, PK</h2>
+            <h1 class="temp">32°C</h1>
+            <p class="description">Clear Sky</p>
+
+            <div class="details">
+                <div class="col">
+                    <h4>Humidity</h4>
+                    <p>45%</p>
+                </div>
+                <div class="col">
+                    <h4>Wind</h4>
+                    <p>12 km/h</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="index.js"></script>
 </body>

@@ -5,6 +5,9 @@ let CityName = 'Hangu';
 const city = document.getElementById('city')
 const temp = document.getElementById('temp')
 const description = document.getElementById('description')
+const icons = document.getElementById('icons')
+const Humidity = document.getElementById('col')
+const windSpeed = document.getElementById('wind-speed')
 const forms = document.querySelector('form')
 
 
@@ -17,18 +20,25 @@ const forms = document.querySelector('form')
         console.log(data);
         city.innerHTML = `${data.name}, PK`;
         console.log(data.main);
-        temp.innerHTML = `${data.main.temp}`
+        temp.innerHTML = `${data.main.temp}°C`
         console.log(description);
         
-        description.innerHTML = `${data.weather[0].description}`
-        if(data.weather[0].icon === '10n')
-        {
-            document.getElementById('icon').innerHTML = '10n' 
-        }
+        description.innerHTML = `${data.weather[0].description}`;
+        const iconCode = data.weather[0].icon;
+         icons.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+         const humValue = data.main.humidity ;
+         Humidity.innerHTML = `💧 Humidity: ${humValue}%`;
+         const speed = data.wind.speed;
+         windSpeed.innerHTML = `Wind: ${speed} km/h`
+        
+       
+            
+        
               
     } catch (error) {
+        city.innerHTML = "City Not Found"
 
-        console.log(error);
+        
         
         
     }

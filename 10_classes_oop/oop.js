@@ -10,3 +10,8 @@ function User(username, userLogedCount, logedIn){
 const userOne = new User('umar',12, true);
 
 const userTwo =  new User('khan', 12, false);
+
+
+console.log(userOne);
+console.log(userTwo);
+
